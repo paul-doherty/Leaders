@@ -97,7 +97,7 @@ namespace Leaders.Model
                 PropertyChanged(this, args);
             }
             stopwatch.Stop();
-            StopwatchDuration = stopwatch.Elapsed.ToString();
+            StopwatchDuration = stopwatch.Elapsed.Milliseconds.ToString()+Constants.DURATION_UNIT;
             PropertyChangedEventArgs stopwatchArgs = new PropertyChangedEventArgs(Constants.METHOD_STOPWATCH_DURATION);
             PropertyChanged(this, stopwatchArgs);
         }

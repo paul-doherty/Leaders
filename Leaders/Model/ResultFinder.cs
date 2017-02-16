@@ -12,14 +12,46 @@ namespace Leaders
     /// </summary>
     abstract class ResultFinder
     {
+        /// <summary>
+        /// Input file stream
+        /// </summary>
         private StreamReader InputReader { get; set; }
+
+        /// <summary>
+        /// The total number of test cases
+        /// </summary>
         public int NumberOfTotalTestCases { get; set; }
+
+        /// <summary>
+        /// The number of the current test case we are on
+        /// </summary>
         public int NumberOfCurrentTestCase { get; set; }
+
+        /// <summary>
+        /// The population of this test case
+        /// </summary>
         public int PopulationOfCurrentTestCase { get; set; }
 
+        /// <summary>
+        /// The leader of the country for the current test case
+        /// </summary>
         protected String Leader { get; set; }
+
+        /// <summary>
+        /// THe unique length of the leader of the current country
+        /// </summary>
         protected int LeaderLength { get; set; }
 
+        /// <summary>
+        /// Find the winners of the test cases
+        /// </summary>
+        /// <returns></returns>
+        abstract public IEnumerable<String> GetWinner();
+
+        /// <summary>
+        /// Create a new result finder to load the input file
+        /// </summary>
+        /// <param name="filePath"></param>
         public ResultFinder(String filePath)
         {
             Leader = String.Empty;
@@ -29,7 +61,7 @@ namespace Leaders
         }
 
         /// <summary>
-        /// Read the next line from the input file
+        /// Get the next test case. Yield after every citizen of the country is read
         /// </summary>
         /// <returns>The next line</returns>
         public IEnumerable<List<String>> GetTest()
@@ -38,7 +70,6 @@ namespace Leaders
             {
                 NumberOfCurrentTestCase++;
                 String line = InputReader.ReadLine();
-                Console.WriteLine(NumberOfCurrentTestCase+ " of " + NumberOfTotalTestCases + " " + line);
                 PopulationOfCurrentTestCase = Int32.Parse(line);
                 List<String> population = new List<string>(PopulationOfCurrentTestCase);
                 for (int index = 0; index < PopulationOfCurrentTestCase; index++)
@@ -48,8 +79,6 @@ namespace Leaders
                 yield return population;
             }
         }
-
-        abstract public IEnumerable<String> GetWinner();
 
         /// <summary>
         /// Load the input file ready for reading
@@ -66,6 +95,13 @@ namespace Leaders
             }
         }
 
+        /// <summary>
+        /// Update the leader of the country if the current citizen either contains 
+        /// more unique characters or he/she contains the same number of characters 
+        /// but comes before the current leader alphabetically
+        /// </summary>
+        /// <param name="citizen">The potential new leader</param>
+        /// <param name="uniqueCharacters">The number of unique characters in that citizens name</param>
         protected void UpdateLeader(String citizen, String uniqueCharacters)
         {
             bool newLeader = false;
@@ -87,6 +123,9 @@ namespace Leaders
             }
         }
 
+        /// <summary>
+        /// Reset the leader attributes
+        /// </summary>
         protected void ResetLeader()
         {
             Leader = String.Empty;

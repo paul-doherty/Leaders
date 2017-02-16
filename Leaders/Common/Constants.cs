@@ -44,7 +44,8 @@ namespace Leaders.Common
         #region Duration
 
         internal const String METHOD_STOPWATCH_DURATION = "StopwatchDuration";
-        internal const String DESIGN_DURATION = "00:00:00.0000";
+        internal const String DESIGN_DURATION = "0 ms";
+        internal const String DURATION_UNIT = " ms";
 
         #endregion
 
