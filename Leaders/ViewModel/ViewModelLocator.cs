@@ -9,6 +9,7 @@ namespace Leaders.ViewModel
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
     /// <para>
+    /// I am using MVVM Light as an mvvm framework 
     /// See http://www.mvvmlight.net
     /// </para>
     /// </summary>

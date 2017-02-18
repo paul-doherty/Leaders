@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Leaders.Model
 {
     /// <summary>
-    /// A factory for the finder methods 
+    /// Use the factory pattern to create the correct object
     /// </summary>
     static class ResultFactory
     {
@@ -16,7 +16,7 @@ namespace Leaders.Model
         /// Create the appropriate result finder based on the users selection
         /// </summary>
         /// <param name="desiredType">The type of finder required</param>
-        /// <param name="filePath">The finder path</param>
+        /// <param name="filePath">The path to the input file</param>
         /// <returns></returns>
         public static ResultFinder GetResultFinder(String desiredType, String filePath)
         {

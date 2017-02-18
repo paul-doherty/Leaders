@@ -8,6 +8,9 @@ namespace Leaders
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// An MVVM application for the seperation of the application layers
+    /// View <-> View Model <-> Model
+    /// This view layer goes through the view model layer for all
     /// </summary>
     public partial class MainWindow : Window
     {
